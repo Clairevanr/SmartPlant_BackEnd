@@ -4,7 +4,7 @@ import jakarta.persistence.*;
 
 
 @Entity
-@Table(name = "SP_SENSORS") // Mappage avec la table SP_SENSORS
+@Table( name = "SP_SENSORS")
 public class SensorEntity {
 
     @Id
@@ -14,14 +14,12 @@ public class SensorEntity {
     @Column(nullable = false, length = 255)
     private String name; // Nom du capteur
 
-    @Column(name = "sensor_value") // Valeur du capteur
+
     private Double value;
 
     @Enumerated(EnumType.STRING)
-    @Column(name = "sensor_type") // Type du capteur
     private SensorType sensorType;
 
-    @Column(name = "plant_id") // ID de la plante associée
     private Long plantId; // Utilisez Long au lieu de Double pour refléter une clé primaire
 
     // Constructeur par défaut

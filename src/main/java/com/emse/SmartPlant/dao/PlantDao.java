@@ -11,6 +11,6 @@ import java.util.List;
 public interface PlantDao extends JpaRepository<PlantEntity, Long> {
     List<PlantEntity> findByName(String name);
     List<PlantEntity> findByPlantType(String plantType);
-    List<PlantEntity> findByMinHumidityGreaterThan(Double minHumidity);
+
 }
 
