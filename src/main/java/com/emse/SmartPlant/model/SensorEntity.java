@@ -8,11 +8,11 @@ import jakarta.persistence.*;
 public class SensorEntity {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY) // Génération automatique de l'ID
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Column(nullable = false, length = 255)
-    private String name; // Nom du capteur
+    private String name; // Sensor name
 
 
     private Double value;
@@ -20,17 +20,23 @@ public class SensorEntity {
     @Enumerated(EnumType.STRING)
     private SensorType sensorType;
 
-    private Long plantId; // Utilisez Long au lieu de Double pour refléter une clé primaire
+    private Long plantId;
 
-    // Constructeur par défaut
+    // Default constructor
     public SensorEntity() {}
 
-    // Constructeur avec paramètres
+    // Constructor
     public SensorEntity(Long id, String name, SensorType sensorType, Double value) {
         this.id = id;
         this.name = name;
         this.sensorType = sensorType;
         this.value = value;
+    }
+
+    //  Constructor defined by name and Type
+    public SensorEntity(SensorType sensorType, String name) {
+        this.sensorType = sensorType;
+        this.name = name;
     }
 
     // Getters et Setters

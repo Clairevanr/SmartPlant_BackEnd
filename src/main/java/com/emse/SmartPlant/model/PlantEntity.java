@@ -17,6 +17,12 @@ public class PlantEntity {
 
     private String plantType; // Type of plant (e.g., succulent, fern)
 
+    private Double current_humidity; // Current humidity of the plant
+
+    private Double current_temperature;
+
+    private Double current_light;
+
 
     private Double min_humidity; // Humidity requirement (in %)
 
@@ -26,8 +32,8 @@ public class PlantEntity {
     @ManyToMany
     private List<SensorEntity> sensors; // List of sensors related to the plant (e.g., temperature, humidity)
 
-
-    public PlantEntity(Long id,String name, String plantType, Double min_humidity, Double max_humidity) {
+    // Plant identification constructor
+    public PlantEntity(Long id, String name, String plantType,Double min_humidity, Double max_humidity) {
         this.id = id;
         this.name = name;
         this.plantType = plantType;
@@ -35,8 +41,15 @@ public class PlantEntity {
         this.max_humidity = max_humidity;
     }
 
+    // Captor management constructor
+    public PlantEntity(String name,Double currentHumidity, Double currentTemperature,Double currentLight ) {
+        this.name = name;
+        this.current_humidity = currentHumidity;
+        this.current_temperature = currentTemperature;
+        this.current_light = currentLight;
+    }
+//Default constructor
     public PlantEntity() {
-
     }
 
 
@@ -69,6 +82,9 @@ public class PlantEntity {
         return min_humidity;
     }
 
+    public Double getMaxHumidity() {
+        return max_humidity;
+    }
 
     public List<SensorEntity> getSensors() {
         return sensors;
@@ -76,5 +92,22 @@ public class PlantEntity {
 
     public void setSensors(List<SensorEntity> sensors) {
         this.sensors = sensors;
+    }
+
+
+    public Double getCurrent_humidity() {
+        return current_humidity;
+    }
+
+    public Double getCurrent_temperature() {
+        return current_temperature;
+    }
+
+    public void setCurrent_temperature(Double current_temperature) {
+        this.current_temperature = current_temperature;
+    }
+
+    public Double getCurrent_light() {
+        return current_light;
     }
 }
