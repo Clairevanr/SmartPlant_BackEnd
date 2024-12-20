@@ -70,9 +70,16 @@ body {
     .image{
         width : 390px;
     }
+    .bande {
+        grid-area: bande;
+        display: flex;
+        align-items: center;
+        background-color: white;
+        width : 100%;
+    }
     .ImMus {
-        width:180px;
-        height: auto;
+        width: 80px;
+        height: 80px;
         justify-self: start;
     }
     .title {
@@ -87,13 +94,7 @@ body {
     .title3 {
         font-size: 32px;
     }
-    .bande {
-        grid-area: bande;
-        display: flex;
-        align-items: center;
-        background-color: white;
-        width : 100%;
-    }
+
     .nav {
         font-size: 14px;
         display: flex;
