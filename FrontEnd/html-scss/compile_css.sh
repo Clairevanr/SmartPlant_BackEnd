@@ -2,6 +2,7 @@
 
 
 if [ -x "$(command -v sass)" ]; then
+  SASS_EXEC=sass
 fi
 
 
@@ -10,4 +11,4 @@ if [ -z "$SASS_EXEC" ]; then
   exit 1
 fi
 
-CHOKIDAR_USEPOLLING=true sass --watch integration/style.scss integration/assets/stylesheets/output.css
+CHOKIDAR_USEPOLLING=true sass --watch integration/style.scss:pages/outputs/outputs.css
