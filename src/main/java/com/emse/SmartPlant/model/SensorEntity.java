@@ -4,7 +4,7 @@ import jakarta.persistence.*;
 
 
 @Entity
-@Table( name = "SP_SENSORS")
+@Table(name = "SP_SENSORS")
 public class SensorEntity {
 
     @Id

@@ -24,21 +24,14 @@ public class PlantEntity {
     private Double current_light;
 
 
-    private Double min_humidity; // Humidity requirement (in %)
-
-
-    private Double max_humidity; // Humidity requirement (in %)
-
-    @ManyToMany
-    private List<SensorEntity> sensors; // List of sensors related to the plant (e.g., temperature, humidity)
+   // @ManyToMany
+    //private List<SensorEntity> sensors; // List of sensors related to the plant (e.g., temperature, humidity)
 
     // Plant identification constructor
-    public PlantEntity(Long id, String name, String plantType,Double min_humidity, Double max_humidity) {
-        this.id = id;
+    public PlantEntity( String name, String plantType) {
         this.name = name;
         this.plantType = plantType;
-        this.min_humidity = min_humidity;
-        this.max_humidity = max_humidity;
+
     }
 
     // Captor management constructor
@@ -48,6 +41,8 @@ public class PlantEntity {
         this.current_temperature = currentTemperature;
         this.current_light = currentLight;
     }
+
+
 //Default constructor
     public PlantEntity() {
     }
@@ -78,21 +73,14 @@ public class PlantEntity {
         this.plantType = plantType;
     }
 
-    public Double getMinHumidity() {
-        return min_humidity;
-    }
 
-    public Double getMaxHumidity() {
-        return max_humidity;
-    }
+   // public List<SensorEntity> getSensors() {
+       // return sensors;
+    //}
 
-    public List<SensorEntity> getSensors() {
-        return sensors;
-    }
-
-    public void setSensors(List<SensorEntity> sensors) {
-        this.sensors = sensors;
-    }
+   // public void setSensors(List<SensorEntity> sensors) {
+       // this.sensors = sensors;
+   // }
 
 
     public Double getCurrent_humidity() {

@@ -25,29 +25,29 @@ public class SensorController {
     }
 
 
-    @GetMapping // (5)
+    @GetMapping
     public List<Sensor> findAll() {
         return sensorDao.findAll()
                 .stream()
                 .map(SensorMapper::of)
                 .sorted(Comparator.comparing(Sensor::name))
-                .collect(Collectors.toList());  // (6)
+                .collect(Collectors.toList());
     }
 
-    @GetMapping(path = "/{id}")
+    @GetMapping(path = "/{id}") //find a sensor by its id
     public Sensor findById(@PathVariable Long id) {
-        return sensorDao.findById(id).map(SensorMapper::of).orElse(null); // (7)
+        return sensorDao.findById(id).map(SensorMapper::of).orElse(null);
     }
 
-    @PostMapping // (8)
-    public ResponseEntity<Sensor> create(@RequestBody SensorCommand sensor) { // (9)
+    @PostMapping // create a sensor
+    public ResponseEntity<Sensor> create(@RequestBody SensorCommand sensor) {
         SensorEntity entity = new SensorEntity(sensor.sensorType(), sensor.name());
         entity.setValue(sensor.value());
         SensorEntity saved = sensorDao.save(entity);
         return ResponseEntity.ok(SensorMapper.of(saved));
     }
 
-    @PutMapping(path = "/{id}") // (10)
+    @PutMapping(path = "/{id}") // update a sensor
     public ResponseEntity<Sensor> update(@PathVariable Long id, @RequestBody SensorCommand sensor) {
         SensorEntity entity = sensorDao.findById(id).orElse(null);
         if (entity == null) {
@@ -56,11 +56,10 @@ public class SensorController {
         entity.setValue(sensor.value());
         entity.setName(sensor.name());
         entity.setSensorType(sensor.sensorType());
-        // (11)
         return ResponseEntity.ok(SensorMapper.of(entity));
     }
 
-    @DeleteMapping(path = "/{id}")
+    @DeleteMapping(path = "/{id}") // delete a sensor
     public void delete(@PathVariable Long id) {
         sensorDao.deleteById(id);
     }

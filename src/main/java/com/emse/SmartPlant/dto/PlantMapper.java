@@ -10,9 +10,8 @@ public class PlantMapper {
              plant.getPlantType(),
              plant.getCurrent_humidity(),
              plant.getCurrent_temperature(),
-             plant.getCurrent_light(),
-             plant.getMinHumidity(),
-             plant.getMaxHumidity()
+             plant.getCurrent_light()
+
         );
     }
 }
