@@ -14,12 +14,14 @@ public class SensorEntity {
     @Column(nullable = false, length = 255)
     private String name; // Sensor name
 
-
+    @Column(name = "sensor_value")
     private Double value;
 
     @Enumerated(EnumType.STRING)
+    @Column(name = "sensor_type", nullable = false, length = 50)
     private SensorType sensorType;
 
+    @Column(name = "plant_id")
     private Long plantId;
 
     // Default constructor

@@ -14,7 +14,7 @@ import java.util.Optional;
 public interface PlantTypeDao extends JpaRepository<PlantTypeEntity, Long> {
 
     @Query("select c from PlantTypeEntity c where c.name=:name")
-    Optional<PlantTypeEntity> findByName(@Param("name") String name);
+    PlantTypeEntity findByName(@Param("name") String name);
 
     @Modifying
     @Query("delete from PlantEntity c where c.name=:name")

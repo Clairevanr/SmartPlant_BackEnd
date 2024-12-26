@@ -14,7 +14,7 @@ public class PlantEntity {
     @Column(nullable = false, length = 255)
     private String name; // Name of the plant
 
-
+    @Column(name = "plant_type")
     private String plantType; // Type of plant (e.g., succulent, fern)
 
     private Double current_humidity; // Current humidity of the plant

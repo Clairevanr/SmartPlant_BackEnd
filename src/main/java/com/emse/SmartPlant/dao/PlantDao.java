@@ -21,6 +21,7 @@ public interface PlantDao extends JpaRepository<PlantEntity, Long> {
 
     @Modifying
     @Query("delete from PlantEntity c where c.plantType=:plantType")
-    void deleteByPlantType(String name);
+    void deleteByPlantType(@Param("plantType") String plantType);
+
 }
 
