@@ -1,15 +1,14 @@
 package com.emse.SmartPlant.dao;
 
-import com.emse.SmartPlant.dto.Plant;
+
 import com.emse.SmartPlant.model.PlantEntity;
-import com.emse.SmartPlant.model.SensorEntity;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
-import org.springframework.data.jpa.repository.Modifying;
-import org.springframework.data.jpa.repository.Query;
-import org.springframework.data.repository.query.Param;
+
+
+
 
 import java.util.List;
 

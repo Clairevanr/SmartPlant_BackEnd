@@ -2,13 +2,10 @@ package com.emse.SmartPlant.api;
 
 import com.emse.SmartPlant.dao.PlantDao;
 import com.emse.SmartPlant.dao.PlantTypeDao;
-import com.emse.SmartPlant.dao.SensorDao;
-import com.emse.SmartPlant.dto.Plant;
-import com.emse.SmartPlant.dto.PlantMapper;
 import com.emse.SmartPlant.dto.PlantType;
 import com.emse.SmartPlant.dto.PlantTypeMapper;
-import com.emse.SmartPlant.model.PlantEntity;
 import com.emse.SmartPlant.model.PlantTypeEntity;
+import jakarta.transaction.Transactional;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -16,10 +13,15 @@ import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 
+@CrossOrigin
+@RestController
+@RequestMapping("/api/types")
+@Transactional
 public class PlantTypeController {
 
     private final PlantTypeDao typedao;
     private final PlantDao plantdao;
+
 
     public PlantTypeController(PlantTypeDao typedao, PlantDao plantdao) {
         this.typedao = typedao;
@@ -39,11 +41,12 @@ public class PlantTypeController {
     // Returns a plant found by its name
     @GetMapping(path = "/{name}")
     public PlantType findByName(@PathVariable String name) {
-        return typedao.findByName(name).map(PlantTypeMapper::of).orElse(null);
+        PlantTypeEntity entity = typedao.findByName(name);
+        return entity != null ? PlantTypeMapper.of(entity) : null;
     }
 
 
-    // Delete the plant type by its ID
+    // Delete the plant type by its name
     @DeleteMapping(path = "/{name}")
     public void delete(@PathVariable String name) {
         typedao.deleteByName(name);
@@ -62,9 +65,9 @@ public class PlantTypeController {
     // Update a plant type (with max and min humidity)
     @PutMapping(path = "/{name}")
     public ResponseEntity<PlantType> update(@PathVariable String name, @RequestBody PlantTypeCommand type) {
-        PlantTypeEntity entity = typedao.findByName(name).orElse(null);
+        PlantTypeEntity entity = typedao.findByName(name);
         if (entity == null) {
-            return ResponseEntity.badRequest().build();
+            return ResponseEntity.notFound().build();
         }
         entity.setMaxHumidity(type.max_humidity());
         entity.setMinHumidity(type.min_humidity());

@@ -1,6 +1,6 @@
 package com.emse.SmartPlant.dao;
 
-import com.emse.SmartPlant.model.PlantEntity;
+
 import com.emse.SmartPlant.model.SensorEntity;
 import com.emse.SmartPlant.model.SensorType;
 import org.assertj.core.api.Assertions;

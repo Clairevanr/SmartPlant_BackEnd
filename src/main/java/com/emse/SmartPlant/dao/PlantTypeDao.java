@@ -17,6 +17,11 @@ public interface PlantTypeDao extends JpaRepository<PlantTypeEntity, Long> {
     PlantTypeEntity findByName(@Param("name") String name);
 
     @Modifying
-    @Query("delete from PlantEntity c where c.name=:name")
     void deleteByName(String name);
+
+
+
+    boolean existsByName(String name);
+
+
 }

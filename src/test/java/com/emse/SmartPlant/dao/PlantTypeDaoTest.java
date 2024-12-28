@@ -1,16 +1,17 @@
 package com.emse.SmartPlant.dao;
 
-import com.emse.SmartPlant.model.PlantEntity;
+
 import com.emse.SmartPlant.model.PlantTypeEntity;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.jpa.repository.Modifying;
-import org.springframework.data.jpa.repository.Query;
-import org.springframework.data.repository.query.Param;
+import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 
-import java.util.Optional;
 
+import static org.junit.jupiter.api.Assertions.assertFalse;
+
+
+@DataJpaTest
 public class PlantTypeDaoTest {
 
     @Autowired
@@ -23,11 +24,15 @@ public class PlantTypeDaoTest {
         Assertions.assertThat(type.getMaxHumidity()).isEqualTo(80.0);
     }
 
+    @Test
+    public void shouldDeleteATypeByName() {
+        plantTypeDao.deleteByName("Monstera");
 
-    @Query("select c from PlantTypeEntity c where c.name=:name")
-    Optional<PlantTypeEntity> findByName(@Param("name") String name);
+        boolean exists = plantTypeDao.existsByName("Monstera");
+        assertFalse(exists);
 
-    @Modifying
-    @Query("delete from PlantEntity c where c.name=:name")
-    void deleteByName(String name);
+    }
+
+
+
 }

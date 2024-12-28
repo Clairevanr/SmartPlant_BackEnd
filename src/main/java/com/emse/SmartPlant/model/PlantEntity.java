@@ -1,7 +1,6 @@
 package com.emse.SmartPlant.model;
 
 import jakarta.persistence.*;
-import java.util.List;
 
 @Entity
 @Table(name = "SP_PLANT")
@@ -87,6 +86,10 @@ public class PlantEntity {
         return current_humidity;
     }
 
+    public void setCurrent_humidity(Double current_humidity) {
+        this.current_humidity = current_humidity;
+    }
+
     public Double getCurrent_temperature() {
         return current_temperature;
     }
@@ -97,5 +100,9 @@ public class PlantEntity {
 
     public Double getCurrent_light() {
         return current_light;
+    }
+
+    public void setCurrent_light(Double current_light) {
+        this.current_light = current_light;
     }
 }

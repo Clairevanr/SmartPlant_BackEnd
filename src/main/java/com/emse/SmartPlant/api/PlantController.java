@@ -4,10 +4,8 @@ import com.emse.SmartPlant.dao.PlantDao;
 import com.emse.SmartPlant.dao.SensorDao;
 import com.emse.SmartPlant.dto.Plant;
 import com.emse.SmartPlant.dto.PlantMapper;
-import com.emse.SmartPlant.dto.Sensor;
-import com.emse.SmartPlant.dto.SensorMapper;
 import com.emse.SmartPlant.model.PlantEntity;
-import com.emse.SmartPlant.model.SensorEntity;
+import jakarta.transaction.Transactional;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -15,10 +13,15 @@ import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 
+@CrossOrigin
+@RestController
+@RequestMapping("/api/plants")
+@Transactional
 public class PlantController {
 
     private final PlantDao plantdao;
     private final SensorDao sensordao;
+
 
     public PlantController(PlantDao plantdao, SensorDao sensordao) {
         this.plantdao = plantdao;
@@ -37,8 +40,10 @@ public class PlantController {
 
     // Returns a plant found by its ID
     @GetMapping(path = "/{id}")
-    public Plant findById(@PathVariable Long id) {
-        return plantdao.findById(id).map(PlantMapper::of).orElse(null);
+    public ResponseEntity<Plant> findById(@PathVariable Long id) {
+        return plantdao.findById(id)
+                .map(plant -> ResponseEntity.ok(PlantMapper.of(plant))) // Return 200 OK with the plant
+                .orElse(ResponseEntity.notFound().build()); // Return 404 Not Found if no plant is found
     }
 
 
@@ -67,7 +72,7 @@ public class PlantController {
         }
         entity.setName(plant.name());
         entity.setPlantType(plant.plantType());
-        // (11)
+
         return ResponseEntity.ok(PlantMapper.of(entity));
     }
 

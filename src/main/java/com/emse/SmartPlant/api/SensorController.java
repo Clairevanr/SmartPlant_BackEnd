@@ -4,6 +4,7 @@ import com.emse.SmartPlant.dao.SensorDao;
 import com.emse.SmartPlant.dto.Sensor;
 import com.emse.SmartPlant.dto.SensorMapper;
 import com.emse.SmartPlant.model.SensorEntity;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
@@ -13,13 +14,14 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @CrossOrigin
-@RestController // (1)
-@RequestMapping("/api/sensors") // (2)
-@Transactional // (3)
+@RestController
+@RequestMapping("/api/sensors")
+@Transactional
 public class SensorController {
 
     private final SensorDao sensorDao;
 
+    @Autowired
     public SensorController(SensorDao sensorDao) {
         this.sensorDao = sensorDao;
     }
