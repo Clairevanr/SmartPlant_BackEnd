@@ -37,3 +37,7 @@ tasks.withType<Test> {
 tasks.bootJar {
 	mainClass.set("com.emse.SmartPlant.SmartPlantApplication")
 }
+
+tasks.withType<Jar> {
+	exclude("FrontEnd/**")
+}
