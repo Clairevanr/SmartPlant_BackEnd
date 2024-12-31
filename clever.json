@@ -1,6 +1,15 @@
 {
-  "type": "docker-compose",
-
+  "docker": {
+    "build": {
+      "context": "./",
+      "dockerfile": "Dockerfile"
+    },
+    "run": {
+      "ports": [
+        "8080"
+      ]
+    }
+  },
   "hooks": {
     "build": "./gradlew build"
   }
