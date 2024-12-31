@@ -1,0 +1,14 @@
+version: '3.8'
+
+services:
+  backend:
+    build: ./
+    environment:
+      - BACKEND_PORT=${BACKEND_PORT}
+    ports:
+      - "${BACKEND_PORT}:${BACKEND_PORT}"
+    networks:
+      - app-network
+
+networks:
+  app-network:
