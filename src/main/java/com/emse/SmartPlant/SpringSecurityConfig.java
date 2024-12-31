@@ -36,7 +36,19 @@ public class SpringSecurityConfig {
         manager.createUser(
                 User.withUsername("admin").password(encoder.encode("PASSWORD")).roles(ROLE_ADMIN).build()
         );
+
+
         return manager;
+    }
+
+
+    @Bean
+    @Order(SecurityProperties.BASIC_AUTH_ORDER)
+    SecurityFilterChain defaultSecurityFilterChain(HttpSecurity http) throws Exception {
+        http.authorizeHttpRequests((requests) -> requests.anyRequest().authenticated());
+        http.formLogin(withDefaults());
+        http.httpBasic(withDefaults());
+        return http.build();
     }
 
 
