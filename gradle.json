@@ -1,9 +1,0 @@
-{
-  "build": {
-    "type": "gradle",
-    "goal": "bootJar"
-  },
-  "deploy": {
-    "jarName": "build/libs/SmartPlant-0.0.1-SNAPSHOT.jar"
-  }
-}
