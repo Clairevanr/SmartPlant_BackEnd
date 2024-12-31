@@ -1,3 +1,7 @@
 {
-  "type": "docker-compose"
+  "type": "docker-compose",
+
+  "hooks": {
+    "build": "./gradlew build"
+  }
 }
