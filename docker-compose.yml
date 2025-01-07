@@ -1,0 +1,16 @@
+
+services:
+  backend:
+    build:
+      context: C:\Users\clair\Documents\SmartPlant_BackEnd
+      dockerfile: Dockerfile
+    ports:
+      - "8080:8080"
+    environment:
+      - PORT=8080
+    networks:
+      - smartplant-network
+
+networks:
+  smartplant-network:
+    driver: bridge

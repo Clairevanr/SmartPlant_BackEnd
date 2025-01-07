@@ -23,8 +23,7 @@ dependencies {
 	testRuntimeOnly("org.junit.platform:junit-platform-launcher")
 	implementation("org.springframework.boot:spring-boot-starter-data-jpa") // libs to use JPA
 	implementation("com.h2database:h2") // libs to use a H2 database
-	implementation("org.springframework.boot:spring-boot-starter-security")
-	testImplementation("org.springframework.security:spring-security-test")
+
 
 
 
