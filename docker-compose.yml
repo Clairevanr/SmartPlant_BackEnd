@@ -11,6 +11,15 @@ services:
     networks:
       - smartplant-network
 
+  frontend:
+    build:
+      context: C:\Users\clair\Documents\SmartPlant_FrontEnd
+    ports:
+      - "80:80"
+    networks:
+      - smartplant-network
+
+
 networks:
   smartplant-network:
     driver: bridge
