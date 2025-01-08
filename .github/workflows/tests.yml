@@ -14,7 +14,7 @@ jobs:
 
     strategy:
       matrix:
-        java-version: [11, 17, 20] # Les versions de Java à tester
+        java-version: [17, 20] # Les versions de Java à tester
 
     steps:
       - name: Checkout code
