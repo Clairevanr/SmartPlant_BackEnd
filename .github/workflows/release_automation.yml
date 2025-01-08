@@ -16,7 +16,7 @@ jobs:
         uses: actions/setup-java@v3
         with:
           java-version: '21'
-          distribution: ''
+          distribution: 'adoptopenjdk'
 
       - name: Build project and run tests
         run: |
