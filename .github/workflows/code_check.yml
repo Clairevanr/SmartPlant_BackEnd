@@ -1,0 +1,37 @@
+name: Code Analysis
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up Java
+        uses: actions/setup-java@v3
+        with:
+          java-version: '17'  # Assure-toi d'utiliser la bonne version de Java
+          distribution: 'adoptium'
+
+      - name: Install Checkstyle
+        run: |
+          curl -L https://github.com/checkstyle/checkstyle/releases/download/checkstyle-10.0/checkstyle-10.0-all.jar -o checkstyle.jar
+
+      - name: Run Checkstyle
+        run: |
+          java -jar checkstyle.jar -c /google_checks.xml src/**/*.java  # Vérifie les fichiers Java sous le répertoire src
+
+  secrets-scan:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
