@@ -29,7 +29,7 @@ jobs:
         run: |
           curl -L https://github.com/gitleaks/gitleaks/releases/download/v8.22.1/gitleaks_8.22.1_linux_x64.tar.gz -o gitleaks.tar.gz
           tar -xvf gitleaks.tar.gz
-          chmod +x gitleaks
+          chmod +x gitleaks  # Changer les permissions pour rendre gitleaks exécutable
           mv gitleaks /usr/local/bin/gitleaks
 
       - name: Run Gitleaks to check for secrets
