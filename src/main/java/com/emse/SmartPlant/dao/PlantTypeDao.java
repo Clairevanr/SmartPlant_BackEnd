@@ -18,9 +18,6 @@ public interface PlantTypeDao extends JpaRepository<PlantTypeEntity, Long> {
 
     @Modifying
     void deleteByName(String name);
-
-
-
     boolean existsByName(String name);
 
 

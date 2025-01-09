@@ -57,7 +57,7 @@ public class PlantTypeController {
     // Create a plant type
     @PostMapping
     public ResponseEntity<PlantType> create(@RequestBody PlantTypeCommand type) { // (9)
-        PlantTypeEntity entity = new PlantTypeEntity(type.name(),type.min_humidity(),type.max_humidity());
+        PlantTypeEntity entity = new PlantTypeEntity(type.name(),type.min_humidity(),type.max_humidity(), type.min_temperature(),type.max_temperature());
         PlantTypeEntity saved = typedao.save(entity);
         return ResponseEntity.ok(PlantTypeMapper.of(saved));
     }
@@ -71,6 +71,9 @@ public class PlantTypeController {
         }
         entity.setMaxHumidity(type.max_humidity());
         entity.setMinHumidity(type.min_humidity());
+        entity.setMinTemperature(type.min_temperature());
+        entity.setMaxTemperature(type.max_temperature());
+
 
         return ResponseEntity.ok(PlantTypeMapper.of(entity));
     }

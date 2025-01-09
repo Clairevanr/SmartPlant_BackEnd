@@ -49,6 +49,10 @@ public class SensorController {
         return ResponseEntity.ok(SensorMapper.of(saved));
     }
 
+
+
+    // Elle, elle ne fonctionne pas (POST)
+
     @PutMapping(path = "/{id}") // update a sensor
     public ResponseEntity<Sensor> update(@PathVariable Long id, @RequestBody SensorCommand sensor) {
         SensorEntity entity = sensorDao.findById(id).orElse(null);

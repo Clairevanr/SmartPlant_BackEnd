@@ -18,13 +18,19 @@ public class PlantTypeEntity {
 
     private Double maxHumidity; // Humidité maximale
 
+    private Double minTemperature;
+
+    private Double maxTemperature;
+
     // Constructeurs
     public PlantTypeEntity() {}
 
-    public PlantTypeEntity(String name, Double minHumidity, Double maxHumidity) {
+    public PlantTypeEntity(String name, Double minHumidity, Double maxHumidity, Double minTemperature, Double maxTemperature) {
         this.name = name;
         this.minHumidity = minHumidity;
         this.maxHumidity = maxHumidity;
+        this.minTemperature = minTemperature;
+        this.maxTemperature = maxTemperature;
     }
 
     // Getters et setters
@@ -58,6 +64,19 @@ public class PlantTypeEntity {
 
     public void setMaxHumidity(Double maxHumidity) {
         this.maxHumidity = maxHumidity;
+    }
+
+    public Double getMinTemperature() {
+        return minTemperature;
+    }
+    public void setMinTemperature(Double minTemperature) {
+        this.minTemperature = minTemperature;
+    }
+    public Double getMaxTemperature() {
+        return maxTemperature;
+    }
+    public void setMaxTemperature(Double maxTemperature) {
+        this.maxTemperature = maxTemperature;
     }
 }
 

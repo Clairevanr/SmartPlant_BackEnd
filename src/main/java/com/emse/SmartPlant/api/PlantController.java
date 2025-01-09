@@ -55,13 +55,29 @@ public class PlantController {
 
     }
 
-    // Create a plant
     @PostMapping
-    public ResponseEntity<Plant> create(@RequestBody PlantCommand plant) { // (9)
-        PlantEntity entity = new PlantEntity(plant.name(),plant.plantType());
-        PlantEntity saved = plantdao.save(entity);
-        return ResponseEntity.ok(PlantMapper.of(saved));
+    public ResponseEntity<Plant> create(@RequestBody PlantCommand plant) {
+        System.out.println("PlantCommand reçu : " + plant);
+
+        try {
+            PlantEntity entity = new PlantEntity(plant.name(), plant.plantType());
+            System.out.println("PlantEntity créé : " + entity);
+
+            PlantEntity saved = plantdao.save(entity);
+            System.out.println("PlantEntity enregistré : " + saved);
+
+            return ResponseEntity.ok(PlantMapper.of(saved));
+        } catch (Exception e) {
+            e.printStackTrace();
+            throw e;
+        }
     }
+    // J'ai dû logger cette requête parce que j'ai eu des problèmes avec, H2 ne configurait pas correctement
+    // l'incrémentation des ID donc quand je faisais une requête post, il ne générait pas une ID valide. (c'est réglé)
+
+
+
+
 
     // Update a plant
     @PutMapping(path = "/{id}")

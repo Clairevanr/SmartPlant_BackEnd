@@ -7,7 +7,9 @@ public class PlantTypeMapper {
         return new PlantType(
                 type.getName(),
                 type.getMaxHumidity(),
-                type.getMinHumidity()
+                type.getMinHumidity(),
+                type.getMaxTemperature(),
+                type.getMinTemperature()
         );
     }
 }
