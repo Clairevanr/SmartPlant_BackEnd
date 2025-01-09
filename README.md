@@ -74,13 +74,13 @@ We also implemented different functionalities such as :
 
 
 All of these were tested through unit tests and Swagger UI.
-The application is deployed on Clevercloud at the adress :
+The application is deployed on Clevercloud at the address :
 
 https://app-3861dd22-bcbc-49fb-a17d-9e71a5501d1b.cleverapps.io/
 
-(This is the adress designed by default by CleverCloud for test purpose)
+(This is the address designed by default by CleverCloud for test purpose)
 
-https://smartplant.com/api
+https://smartplant.cleverapps.io/
 
 (It is supposed to be available at this address but is not for some reason,
 it takes to much time to launch and end up failing)
