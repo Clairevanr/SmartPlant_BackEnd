@@ -19,7 +19,7 @@ This part is dedicated to the backend app of the SmartPlant Project.
 
 /!\ CAUTION
 The project was hosted on Windows to help dealing with some errors (as suggested by the instructor).
-So there will be issues building it on a UNIX like machine
+So there might be issues building it on a UNIX like machine
 Try this command if available :
 
     dos2unix gradlew
@@ -43,3 +43,50 @@ Try this command if available :
 
 ## Clean the build directory:
     ./gradlew clean
+
+
+When running the application, you can find it on :  http://localhost:8080
+
+# Features
+
+The model relies on: 
+
+- PlantEntity describing the plants of the user.
+
+- PlantType describing for each type of plant the recommendations when it comes to
+humidity and temperature. Those presented here were for test purpose and may not be accurate.
+Plus every plant from the same type won't always require the same amounts,but I chose this model to 
+simplify.
+
+- SensorEntity describing the sensors attached to the plants, their types and values.
+
+- SensorType (enum) describing the type of the sensor.
+
+All of this with their DAO, DTO, Mappers, etc... Plus the Unit tests related
+
+We also implemented different functionalities such as :
+
+-   Listing all the plants, sensors, plant types.
+- Creating new instances of each
+- Updating them
+- Deleting them
+- Researching them by id (Plants, Sensors) or names (PlantTypes)
+
+
+All of these were tested through unit tests and Swagger UI.
+The application is deployed on Clevercloud at the adress :
+
+https://app-3861dd22-bcbc-49fb-a17d-9e71a5501d1b.cleverapps.io/
+
+(This is the adress designed by default by CleverCloud for test purpose)
+
+https://smartplant.com/api
+
+(It is supposed to be available at this address but is not for some reason,
+it takes to much time to launch and end up failing)
+
+
+# Additional informations
+
+The project is set up for Dockerisation (that was for an assignment in Majeur) and got Github workflows (for the same reason)
+. Which is not relevant for you but had to be maintained.
